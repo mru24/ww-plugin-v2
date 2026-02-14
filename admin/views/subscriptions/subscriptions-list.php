@@ -32,7 +32,7 @@
                         <td><?php echo esc_html( $sub['plan_name'] ); ?></td>
                         <td><?php echo esc_html( $sub['plan_id'] ); ?></td>
                         <td>
-                        	<span class="<?php echo (esc_html( ucfirst( $sub['status']))  == 'Active') ? 'tag-green' : 'tag-yellow'; ?>">
+                        	<span class="tag-<?php echo strtolower(esc_html( ucfirst( $sub['status']))); ?>">
                         		<?php echo esc_html( ucfirst( $sub['status'] ) ); ?>
                             </span>
                         </td>
@@ -53,8 +53,9 @@
         </tbody>
     </table>
     <style>
-        .tag-green { background-color: #d4edda; color: #155724; padding: 4px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; }
-        .tag-yellow { background-color: #fff3cd; color: #856404; padding: 4px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; }
+        .tag-active { background-color: #d4edda; color: #155724; padding: 4px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; }
+        .tag-paused { background-color: #fff3cd; color: #856404; padding: 4px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; }
+        .tag-disabled { background-color: #8f2424; color: #f8c8c8; padding: 4px 8px; border-radius: 4px; font-size: 0.9em; font-weight: bold; }
         .wp-list-table ul { margin: 0; padding: 0 0 0 15px; }
         .wp-list-table li { margin-bottom: 3px; }
     </style>

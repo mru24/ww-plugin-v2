@@ -33,8 +33,7 @@
                     <select name="status" id="status">
                         <option value="active" <?php selected( $status, 'active' ); ?>>Active</option>
                         <option value="paused" <?php selected( $status, 'paused' ); ?>>Paused</option>
-                        <option value="cancelled" <?php selected( $status, 'cancelled' ); ?>>Cancelled</option>
-                        <option value="expired" <?php selected( $status, 'expired' ); ?>>Expired</option>
+                        <option value="disabled" <?php selected( $status, 'disabled' ); ?>>Disabled</option>
                     </select>
                 </td>
             </tr>

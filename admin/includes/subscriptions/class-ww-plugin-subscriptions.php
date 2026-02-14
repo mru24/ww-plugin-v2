@@ -28,7 +28,7 @@ if ( ! class_exists( 'WW_Plugin_V2_Subscriptions' ) ) {
          */
         public function get_subscriptions() {
             $table = $this->get_table_name( 'subscriptions' );
-            $sql = "SELECT * FROM {$table} ORDER BY created_at DESC";
+            $sql = "SELECT * FROM {$table} ORDER BY plan_name ASC";
             return $this->db->get_results( $sql, ARRAY_A );
         }
 
