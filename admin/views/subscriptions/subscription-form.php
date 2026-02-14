@@ -12,8 +12,8 @@
 
     <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 
-        <?php wp_nonce_field( 'mybp_subscription_nonce' ); ?>
-        <input type="hidden" name="action" value="mybp_add_subscription">
+        <?php wp_nonce_field( 'ww_plugin_v2_subscription_nonce' ); ?>
+        <input type="hidden" name="action" value="ww_plugin_v2_add_subscription">
         <input type="hidden" name="subscription_id" value="<?php echo isset( $subscription_data['id'] ) ? absint( $subscription_data['id'] ) : 0; ?>">
 
         <table class="form-table" role="presentation">
@@ -60,7 +60,7 @@
 
         <p class="submit">
             <input type="submit" class="button button-primary button-large" value="<?php echo isset( $subscription_data['id'] ) ? 'Update Subscription' : 'Add Subscription'; ?>">
-            <a href="<?php echo esc_url( admin_url( 'admin.php?page=my-booking-subscriptions' ) ); ?>" class="button button-secondary button-large">Cancel</a>
+            <a href="<?php echo esc_url( admin_url( 'admin.php?page=ww-plugin-v2-subscriptions' ) ); ?>" class="button button-secondary button-large">Cancel</a>
         </p>
     </form>
 </div>

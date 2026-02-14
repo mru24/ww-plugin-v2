@@ -42,8 +42,8 @@
                         <td><?php echo ww_format_datetime(esc_html( $sub['created_at'] )); ?></td>
                         <td><?php echo ww_format_datetime(esc_html( $sub['updated_at'] )); ?></td>
                         <td>
-                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=my-booking-edit-subscription&id=' . absint( $sub['id'] ) ) ); ?>">Edit</a> |
-                            <a href="<?php echo wp_nonce_url( admin_url( 'admin-post.php?action=mybp_delete_subscription&id=' . absint( $sub['id'] ) ), 'mybp_delete_subscription' ); ?>" onclick="return confirm('Are you sure you want to delete this subscription?');">Delete</a>
+                            <a href="<?php echo esc_url( admin_url( 'admin.php?page=ww-plugin-v2-edit-subscription&id=' . absint( $sub['id'] ) ) ); ?>">Edit</a> |
+                            <a href="<?php echo wp_nonce_url( admin_url( 'admin-post.php?action=ww_plugin_v2_delete_subscription&id=' . absint( $sub['id'] ) ), 'ww_plugin_v2_delete_subscription' ); ?>" onclick="return confirm('Are you sure you want to delete this subscription?');">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

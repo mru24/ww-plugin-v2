@@ -35,7 +35,7 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
             $this->load_active_modules();
 
             // Load plugin functions
-            // require_once plugin_dir_path( __FILE__ ) . 'includes/ww-plugin-functions.php';
+            require_once WW_PLUGIN_V2_DIR . 'includes/ww-plugin-functions.php';
 
             // Load Subscription Functions
             if (! empty($this->active_modules['subscriptions'])) {
@@ -75,9 +75,9 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
         {
             // Subscription admin hooks
             if (! empty($this->active_modules['subscriptions'])) {
-                add_action('admin_post_mybp_add_subscription', [$this, 'process_subscription_actions']);
-                add_action('admin_post_mybp_update_subscription', [$this, 'process_subscription_actions']);
-                add_action('admin_post_mybp_delete_subscription', [$this, 'process_delete_subscription']);
+                add_action('admin_post_ww_plugin_v2_add_subscription', [$this, 'process_subscription_actions']);
+                add_action('admin_post_ww_plugin_v2_update_subscription', [$this, 'process_subscription_actions']);
+                add_action('admin_post_ww_plugin_v2_delete_subscription', [$this, 'process_delete_subscription']);
             }
         }
 
@@ -108,7 +108,7 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
                     'Edit Subscription',
                     'Edit Subscription',
                     'manage_options',
-                    'my-booking-edit-subscription',
+                    'ww-plugin-v2-edit-subscription',
                     [$this, 'render_edit_subscription_page']
                 );
             }
