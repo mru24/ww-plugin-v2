@@ -92,7 +92,7 @@ if (! class_exists('WW_Plugin_V2')) {
                 UNIQUE KEY email (email)
               ) $charset_collate;",
               'subscriptions' => "CREATE TABLE " . $this->get_table_name('subscriptions') . " (
-                id BIGINT UNSIGNED NOT NULL UNIQUE,
+                id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
                 plan_name varchar(100) NOT NULL,
                 plan_id varchar(100) NOT NULL,
                 status varchar(20) DEFAULT 'active' NOT NULL,

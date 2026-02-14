@@ -51,10 +51,6 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
         }
 
         public function enqueue_admin_scripts( $hook ) {
-            // Only load scripts on our lake edit page
-            if ( ! isset( $_GET['page'] ) || 'my-booking-edit-lake' !== $_GET['page'] ) {
-                return;
-            }
             wp_enqueue_media();
         }
 
@@ -83,8 +79,7 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
 
         // --- ADMIN MENU SETUP ---
 
-        public function add_plugin_menu()
-        {
+        public function add_plugin_menu() {
             add_menu_page(
                 'WW Plugin V2 menu',
                 'WW Plugin',
@@ -126,8 +121,7 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
 
 // SUBSCRIPTIONS
 
-        public function process_subscription_actions()
-        {
+        public function process_subscription_actions() {
             if (! current_user_can('manage_options')) {
                 wp_die('You do not have sufficient permissions to access this page.');
             }
