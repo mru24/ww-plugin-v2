@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return string                 The formatted date string or an empty string on failure.
  */
 if ( ! function_exists( 'ww_format_datetime' ) ) {
-    function ww_format_datetime( $datetime_string, $format = 'd-m-Y' ) {
+    function ww_format_datetime( $datetime_string, $format = 'd-m-Y H:i' ) {
         if ( empty( $datetime_string ) ) {
             return '';
         }

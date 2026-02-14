@@ -14,6 +14,7 @@
 
         <?php wp_nonce_field( 'ww_plugin_v2_subscription_nonce' ); ?>
         <input type="hidden" name="action" value="ww_plugin_v2_add_subscription">
+        <input type="hidden" name="created_at" value="<?php echo isset( $subscription_data['created_at'] ) ? ( $subscription_data['created_at'] ) : ''; ?>">
         <input type="hidden" name="subscription_id" value="<?php echo isset( $subscription_data['id'] ) ? absint( $subscription_data['id'] ) : 0; ?>">
 
         <table class="form-table" role="presentation">

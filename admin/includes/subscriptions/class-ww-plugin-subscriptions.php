@@ -45,27 +45,34 @@ if ( ! class_exists( 'WW_Plugin_V2_Subscriptions' ) ) {
          * Insert or update a subscription.
          */
         public function save_subscription( $data, $subscription_id = 0 ) {
-            $table  = $this->get_table_name( 'subscriptions' );
-            $format = array( '%s', '%s', '%s', '%s', '%f', '%s', '%s' );
+          $table = $this->get_table_name( 'subscriptions' );
 
-            $fields = array(
-                'plan_name' => sanitize_text_field( $data['plan_name'] ),
-                'plan_id' => sanitize_text_field( sanitize_title($data['plan_name']) ),
-                'status' => sanitize_text_field( $data['status'] ),
-                'tenure' => sanitize_text_field( $data['tenure'] ),
-                'price' => floatval( $data['price'] ),
-                'payment_gateway_id' => sanitize_text_field( $data['payment_gateway_id'] ),
-                'created_at' => current_time( 'mysql', true ),
-            );
+          // 1. Define fields that are common to both Insert and Update
+          $fields = array(
+              'plan_name'          => sanitize_text_field( $data['plan_name'] ),
+              'plan_id'            => sanitize_title( $data['plan_name'] ),
+              'status'             => sanitize_text_field( $data['status'] ),
+              'tenure'             => sanitize_text_field( $data['tenure'] ),
+              'price'              => floatval( $data['price'] ),
+              'payment_gateway_id' => sanitize_text_field( $data['payment_gateway_id'] ),
+          );
 
-            if ( $subscription_id > 0 ) {
-                $where = array( 'id' => $subscription_id );
-                $where_format = array( '%d' );
-                return $this->db->update( $table, $fields, $where, $format, $where_format );
-            } else {
-                return $this->db->insert( $table, $fields, $format );
-            }
-        }
+          // 2. Define the base formats for those 6 fields
+          $format = array( '%s', '%s', '%s', '%s', '%f', '%s' );
+
+          if ( $subscription_id > 0 ) {
+              // UPDATE: Do NOT include created_at here
+              $where        = array( 'id' => $subscription_id );
+              $where_format = array( '%d' );
+              return $this->db->update( $table, $fields, $where, $format, $where_format );
+          } else {
+              // INSERT: Add created_at and its format placeholder
+              $fields['created_at'] = current_time( 'mysql', true );
+              $format[]             = '%s'; // Add the 7th format placeholder
+
+              return $this->db->insert( $table, $fields, $format );
+          }
+      }
 
         /**
          * Delete a subscription.
