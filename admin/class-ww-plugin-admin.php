@@ -139,6 +139,7 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
                 'tenure'             => $_POST['tenure'],
                 'price'              => $_POST['price'],
                 'payment_gateway_id' => $_POST['payment_gateway_id'],
+                'created_at'         => current_time( 'mysql', true ),
             ];
 
             $result  = $this->subscriptions->save_subscription($data, $subscription_id);

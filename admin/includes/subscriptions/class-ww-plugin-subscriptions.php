@@ -46,15 +46,16 @@ if ( ! class_exists( 'WW_Plugin_V2_Subscriptions' ) ) {
          */
         public function save_subscription( $data, $subscription_id = 0 ) {
             $table  = $this->get_table_name( 'subscriptions' );
-            $format = array( '%s', '%s', '%s', '%s', '%s', '%f' );
+            $format = array( '%s', '%s', '%s', '%s', '%f', '%s', '%s' );
 
             $fields = array(
                 'plan_name' => sanitize_text_field( $data['plan_name'] ),
                 'plan_id' => sanitize_text_field( sanitize_title($data['plan_name']) ),
                 'status' => sanitize_text_field( $data['status'] ),
                 'tenure' => sanitize_text_field( $data['tenure'] ),
-                'payment_gateway_id' => sanitize_text_field( $data['payment_gateway_id'] ),
                 'price' => floatval( $data['price'] ),
+                'payment_gateway_id' => sanitize_text_field( $data['payment_gateway_id'] ),
+                'created_at' => current_time( 'mysql', true ),
             );
 
             if ( $subscription_id > 0 ) {
