@@ -3,7 +3,11 @@
  * Core Plugin Class: Handles database, activation, and class loading.
  */
 
+// Admin
 require_once WW_PLUGIN_V2_DIR . 'admin/class-ww-plugin-admin.php';
+
+// Frontend
+require_once WW_PLUGIN_V2_DIR . 'frontend/class-ww-plugin-frontend.php';
 
 
 if (! class_exists('WW_Plugin_V2')) {
@@ -12,6 +16,7 @@ if (! class_exists('WW_Plugin_V2')) {
     protected $db;
     protected $table_prefix = 'ww_plugin_db_';
     protected $admin;
+    protected $frontend;
 
     /**
      * Singleton pattern ensures only one instance of the class exists.
@@ -31,9 +36,13 @@ if (! class_exists('WW_Plugin_V2')) {
       register_activation_hook(WW_PLUGIN_V2_DIR . 'ww-plugin.php', [$this, 'WW_Plugin_v2_activate']);
 
       // Core WordPress Hooks
-      add_action('rest_api_init', [$this, 'init_rest_api']);
+      //add_action('rest_api_init', [$this, 'init_rest_api']);
 
+      // ADMIN
       $this->admin = WW_Plugin_V2_Admin::get_instance( $this->db, $this->table_prefix );
+
+      // FRONTEND
+      $this->frontend = new WW_Plugin_V2_Frontend( $this->db, $this->table_prefix );
     }
 
     /**
