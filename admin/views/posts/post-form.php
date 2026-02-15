@@ -10,6 +10,8 @@
 <div class="wrap">
   <h1><?php echo esc_html( $title ); ?></h1>
 
+  <hr>
+
   <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 
     <?php wp_nonce_field( 'ww_plugin_v2_post_nonce' ); ?>
@@ -19,15 +21,15 @@
     <table class="form-table" role="presentation">
       <tr>
         <th scope="row"><label for="post_title">Post Title *</label></th>
-        <td><input type="text" name="post_title" id="post_title" class="regular-text" required value="<?php echo isset( $data['post_title'] ) ? esc_attr( $data['post_title'] ) : ''; ?>"></td>
+        <td><textarea name="post_title" id="post_title" class="regular-text" required><?php echo isset( $data['post_title'] ) ? esc_attr( $data['post_title'] ) : ''; ?></textarea></td>
       </tr>
       <tr>
         <th scope="row"><label for="post_title">Post Excerpt *</label></th>
-        <td><textarea name="post_excerpt" id="post_excerpt" class="regular-text" required><?php echo isset( $data['post_excerpt'] ) ? esc_attr( $data['post_excerpt'] ) : ''; ?></textarea></td>
+        <td><textarea name="post_excerpt" id="post_excerpt" class="regular-text tall" required><?php echo isset( $data['post_excerpt'] ) ? esc_attr( $data['post_excerpt'] ) : ''; ?></textarea></td>
       </tr>
       <tr>
         <th scope="row"><label for="post_content">Post Content *</label></th>
-        <td><textarea name="post_content" id="post_content" class="regular-text" required><?php echo isset( $data['post_content'] ) ? esc_attr( $data['post_content'] ) : ''; ?></textarea></td>
+        <td><textarea name="post_content" id="post_content" class="regular-text tall" required><?php echo isset( $data['post_content'] ) ? esc_attr( $data['post_content'] ) : ''; ?></textarea></td>
       </tr>
       <tr>
         <th scope="row"><label for="post_author">Post Author *</label></th>
@@ -51,4 +53,13 @@
       <a href="<?php echo esc_url( admin_url( 'admin.php?page=ww-plugin-v2-posts' ) ); ?>" class="button button-secondary button-large">Cancel</a>
     </p>
   </form>
+  <style>
+    textarea {
+      resize: none;
+      min-height: 100px;
+    }
+    textarea.tall {
+      min-height: 200px;
+    }
+  </style>
 </div>

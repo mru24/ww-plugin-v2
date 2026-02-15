@@ -6,51 +6,49 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
-
-
 ?>
 
 <div class="wrap">
-    <h1>Dashboard</h1>
+  <h1>Dashboard</h1>
 
-    <div class="dashboard-widgets">
-        <!-- Quick Stats -->
-        <div class="dashboard-row">
-            <div class="stat-card">
-                <div class="stat-number"><?php echo esc_html($subscriptions_count); ?></div>
-                <div class="stat-label">Total Subscriptions</div>
-            </div>
-            <div class="stat-card">
+  <div class="dashboard-widgets">
+    <div class="dashboard-row">
+      <div class="stat-card">
+        <div class="stat-number"><?php echo esc_html($subscriptions_count); ?></div>
+        <div class="stat-label">Total Subscriptions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number"><?php echo esc_html($posts_count); ?></div>
+        <div class="stat-label">Total Posts</div>
+      </div>
+      <div class="stat-card">
 
-            </div>
-            <div class="stat-card">
+      </div>
+      <div class="stat-card">
 
-            </div>
-            <div class="stat-card">
+      </div>
+      <div class="stat-card">
 
-            </div>
-            <div class="stat-card">
+      </div>
+      <div class="stat-card">
 
-            </div>
-            <div class="stat-card">
+      </div>
+    </div>
 
-            </div>
+    <!-- Main Content Area -->
+    <div class="dashboard-main">
+        <!-- Left Column -->
+        <div class="dashboard-column">
+
+
         </div>
 
-        <!-- Main Content Area -->
-        <div class="dashboard-main">
-            <!-- Left Column -->
-            <div class="dashboard-column">
+        <!-- Right Column -->
+        <div class="dashboard-column">
 
-
-            </div>
-
-            <!-- Right Column -->
-            <div class="dashboard-column">
-
-            </div>
         </div>
     </div>
+  </div>
 </div>
 
 <style>

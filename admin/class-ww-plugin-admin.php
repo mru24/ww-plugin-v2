@@ -149,6 +149,7 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
       $table = $this->db->prefix . $this->table_prefix;
       // Get counts for dashboard
       $subscriptions_count = $this->db->get_var("SELECT COUNT(*) FROM {$table}subscriptions");
+      $posts_count = $this->db->get_var("SELECT COUNT(*) FROM {$table}posts");
 
       require_once plugin_dir_path( __FILE__ ) . 'views/dashboard.php';
     }
@@ -161,13 +162,13 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
 
     public function render_edit_subscription_page() {
       $subscription_id   = isset($_GET['id']) ? intval($_GET['id']) : 0;
-      $subscription_data = [];
+      $data = [];
       $title             = 'Add New Subscription';
 
       if ($subscription_id > 0) {
-        $subscription_data = $this->subscriptions->get_subscription($subscription_id);
-        if ($subscription_data) {
-          $title = 'Edit Subscription: ' . esc_html($subscription_data['plan_name']);
+        $data = $this->subscriptions->get_subscription($subscription_id);
+        if ($data) {
+          $title = 'Edit Subscription: ' . esc_html($data['plan_name']);
         }
       }
       require_once plugin_dir_path(__FILE__) . 'views/subscriptions/subscription-form.php';
