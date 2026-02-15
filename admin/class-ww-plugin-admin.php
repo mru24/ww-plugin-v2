@@ -106,6 +106,24 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
         'dashicons-calendar-alt',
         6
       );
+      if (! empty($this->active_modules['posts'])) {
+        add_submenu_page(
+          'ww-plugin-v2-main',
+          'Posts',
+          'Posts',
+          'manage_options',
+          'ww-plugin-v2-posts',
+          [$this, 'render_posts_page']
+        );
+        add_submenu_page(
+          null,
+          'Edit Post',
+          'Edit Post',
+          'manage_options',
+          'ww-plugin-v2-edit-post',
+          [$this, 'render_edit_post_page']
+        );
+      };
       if (! empty($this->active_modules['subscriptions'])) {
         add_submenu_page(
           'ww-plugin-v2-main',
@@ -124,24 +142,14 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
           [$this, 'render_edit_subscription_page']
         );
       };
-      if (! empty($this->active_modules['posts'])) {
-        add_submenu_page(
-          'ww-plugin-v2-main',
-          'Posts',
-          'Posts',
-          'manage_options',
-          'ww-plugin-v2-posts',
-          [$this, 'render_posts_page']
-        );
-        add_submenu_page(
-          null,
-          'Edit Post',
-          'Edit Post',
-          'manage_options',
-          'ww-plugin-v2-edit-post',
-          [$this, 'render_edit_post_page']
-        );
-      }
+      add_submenu_page(
+        'ww-plugin-v2-main',
+        'Settings',
+        'Settings',
+        'manage_options',
+        'ww-plugin-v2-settings',
+        [$this, 'render_settings_page']
+      );
     }
 
 // DASHBOARD
@@ -192,6 +200,12 @@ if (! class_exists('WW_Plugin_V2_Admin')) {
         }
       }
       require_once plugin_dir_path(__FILE__) . 'views/posts/post-form.php';
+    }
+
+
+// SETTINGS
+    public function render_settings_page() {
+      require_once plugin_dir_path(__FILE__) . 'views/settings.php';
     }
   }
 }

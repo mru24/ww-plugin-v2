@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="wrap">
   <h1>Dashboard</h1>
 
+  <hr>
+
   <div class="dashboard-widgets">
     <div class="dashboard-row">
       <div class="stat-card">
