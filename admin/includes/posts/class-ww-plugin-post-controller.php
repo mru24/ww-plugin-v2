@@ -19,7 +19,7 @@ if (! class_exists('WW_Post_Controller')) {
 
       check_admin_referer('ww_plugin_v2_post_nonce');
 
-      $post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+      $post_id = isset($_POST['id']) ? intval($_POST['id']) : 0;
 
       $data = [
         'post_title'        => sanitize_text_field($_POST['post_title']),
@@ -48,7 +48,7 @@ if (! class_exists('WW_Post_Controller')) {
       check_admin_referer('ww_plugin_v2_delete_post');
 
       $post_id      = isset($_GET['id']) ? intval($_GET['id']) : 0;
-      $result       = $this->post->delete_post($post_id);
+      $result       = $this->posts->delete_post($post_id);
       $message      = $result ? 3 : 4;
 
       wp_redirect(admin_url('admin.php?page=ww-plugin-v2-posts&message=' . $message));

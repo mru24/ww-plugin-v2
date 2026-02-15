@@ -58,9 +58,9 @@ if (! class_exists('WW_Plugin_V2')) {
       // All table creation SQL remains here for activation
       $tables = [
        'posts' => "CREATE TABLE " . $this->get_table_name('posts') . " (
-          id BIGINT UNSIGNED NOT NULL UNIQUE,
+          id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
           post_id BIGINT NOT NULL,
-          post_status enum('draft','published','ready','cancelled') NOT NULL DEFAULT 'draft',
+          post_status enum('draft','published','cancelled') NOT NULL DEFAULT 'draft',
           post_title text NULL,
           post_excerpt text NULL,
           post_content text NULL,
@@ -71,7 +71,7 @@ if (! class_exists('WW_Plugin_V2')) {
           KEY post_id (post_id)
         ) $charset_collate;",
         'authors'       => "CREATE TABLE " . $this->get_table_name('authors') . " (
-          id BIGINT UNSIGNED NOT NULL UNIQUE,
+          iid BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
           first_name varchar(100) NOT NULL,
           last_name varchar(100) NOT NULL,
           email varchar(150) NOT NULL,
