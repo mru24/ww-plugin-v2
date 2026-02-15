@@ -32,7 +32,7 @@
                         <td><?php echo esc_html( $sub['plan_name'] ); ?></td>
                         <td><?php echo esc_html( $sub['plan_id'] ); ?></td>
                         <td>
-                        	<span class="tag-<?php echo strtolower(esc_html( ucfirst( $sub['status']))); ?>">
+                        	<span class="tag-<?php echo strtolower(esc_html($sub['status'])); ?>">
                         		<?php echo esc_html( ucfirst( $sub['status'] ) ); ?>
                             </span>
                         </td>

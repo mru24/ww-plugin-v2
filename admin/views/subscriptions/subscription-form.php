@@ -50,7 +50,13 @@
             </tr>
             <tr>
                 <th scope="row"><label for="price">Price (£)</label></th>
-                <td><input type="number" name="price" id="price" class="small-text" step="0.01" value="<?php echo isset( $subscription_data['price'] ) ? esc_attr( $subscription_data['price'] ) : ''; ?>"></td>
+                <td><input
+                      type="number"
+                      name="price"
+                      id="price"
+                      class="small-text"
+                      step="0.01"
+                      value="<?php echo isset( $subscription_data['price'] ) ? esc_attr( $subscription_data['price'] ) : ''; ?>"></td>
             </tr>
             <tr>
                 <th scope="row"><label for="payment_gateway_id">Payment Gateway ID</label></th>
